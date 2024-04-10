@@ -1,0 +1,18 @@
+.hidden {
+  display: none;
+}
+
+.border {
+  border: 2px solid red;
+}
+
+.image {
+  border: 3px dotted gray;
+}
+
+#profile-pic {
+  z-index: -1;
+  overflow: hidden;
+
+  width: fit-content;
+}
