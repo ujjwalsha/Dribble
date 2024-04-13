@@ -3,7 +3,7 @@
 }
 
 .border {
-  border: 2px solid red;
+  border: 2px solid #ff0080;
 }
 
 .image {
@@ -15,4 +15,30 @@
   overflow: hidden;
 
   width: fit-content;
+}
+
+.flex {
+  @media (max-width: 480px) {
+    display: grid;
+    width: 0;
+  }
+}
+
+[image] {
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+
+.clicked {
+  background-color: #ff0080;
+  opacity: 1;
+  color: white;
+}
+
+.clicked:hover {
+  background-color: #ff0080;
+}
+.active {
+  background-color: green;
 }
