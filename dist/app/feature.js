@@ -1,6 +1,6 @@
 'use strict';
 
-signPage.classList.remove('hidden');
+// signPage.classList.remove('hidden');
 profilePage.classList.add('hidden');
 featureData.classList.add('hidden');
 const backBtn = document.querySelector('[back-button]');

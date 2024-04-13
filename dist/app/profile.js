@@ -1,10 +1,8 @@
 'use strict';
 
-// signPage.classList.add('hidden');
+signPage.classList.remove('hidden');
 featureData.classList.add('hidden');
 profilePage.classList.add('hidden');
-
-console.log('hello');
 
 const chooseImage = document.querySelector('choose-image');
 const profilePic = document.getElementById('profile-pic');
@@ -12,6 +10,7 @@ const inputFile = document.getElementById('input-file');
 const LocationData = document.querySelector('[data-location]');
 const nextBtn = document.querySelector('#next-button');
 const Error = document.querySelector('[error-null]');
+const yourCharacter = document.querySelector('[character]');
 
 inputFile.classList.add('hidden');
 
@@ -22,22 +21,44 @@ inputFile.onchange = function () {
 nextBtn.addEventListener('click', () => {
   console.log(profilePic.src);
   var value = profilePic.src;
-
-  console.log(value);
+  const urlPart = value.split('/');
   console.log(`${value}`);
+  console.log(checkUrl(urlPart));
 
-  if (profilePic.src === 'http://127.0.0.1:5502/DRIBBLE1/dist/app.html') {
+  if (checkUrl(urlPart)) {
     Error.style.border = '2px solid red';
-    console.log('hello');
-  }
-
-  if (
-    profilePic.src == `blob: ${value}` &&
-    value !== 'http://127.0.0.1:5502/DRIBBLE1/dist/app.html'
-  ) {
+  } else {
     featureData.classList.remove('hidden');
     profilePage.classList.add('hidden');
+    let imageUrl = `${value}`;
+
+    fetchImage(imageUrl)
+      .then(response => {
+        console.log('😄');
+      })
+      .catch(error => {
+        console.log('😫');
+      });
   }
 });
 
 LocationData.value = '';
+
+function checkUrl(urlPart) {
+  let target = 'index.html';
+  for (let i = 0; i < urlPart.length; i++) {
+    if (urlPart[i] == target) {
+      return true;
+    }
+  }
+  return false;
+}
+
+console.log(yourCharacter.src);
+
+async function fetchImage(imageUrl) {
+  const response = await fetch(imageUrl);
+  const data = await response.blob();
+
+  yourCharacter.src = URL.createObjectURL(data);
+}
