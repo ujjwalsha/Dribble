@@ -29,7 +29,7 @@ function emptyBox() {
 }
 
 async function fetchUser() {
-  const response = await fetch('./dist/app/data.json');
+  const response = await fetch('./app/data.json');
   //   console.log(response);
   const data = await response.json();
 
