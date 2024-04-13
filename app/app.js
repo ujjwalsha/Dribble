@@ -45,7 +45,9 @@ submitBtn.addEventListener('click', async () => {
   const emailValue = emailId.value;
 
   const data = await fetchUser();
-  console.log(data);
+  // console.log(data);
+  const value = emailValue.split('@');
+  console.log(checkEmail(emailValue.split('@')));
 
   for (let i = 0; i < data.length; i++) {
     if (data[i].username === inputUserName) {
@@ -58,7 +60,7 @@ submitBtn.addEventListener('click', async () => {
       }
       break;
     } else {
-      if (userName.value === '' || emailId.value === '') {
+      if (!checkEmail(value) || inputUserName == '') {
         profilePage.classList.add('hidden');
         showError();
       } else {
@@ -80,4 +82,15 @@ function showError() {
   dataOther.forEach(e => {
     e.classList.add('border');
   });
+}
+
+function checkEmail(emailValue) {
+  let n = emailValue.length;
+
+  for (let i = 0; i < n; i++) {
+    if (emailValue[i] === 'gmail.com') {
+      return true;
+    }
+  }
+  return false;
 }
