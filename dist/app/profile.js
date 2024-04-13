@@ -2,7 +2,6 @@
 
 // signPage.classList.add('hidden');
 featureData.classList.add('hidden');
-
 profilePage.classList.add('hidden');
 
 console.log('hello');
@@ -33,7 +32,7 @@ nextBtn.addEventListener('click', () => {
   }
 
   if (
-    profilePic.src == `${value}` &&
+    profilePic.src == `blob: ${value}` &&
     value !== 'http://127.0.0.1:5502/DRIBBLE1/dist/app.html'
   ) {
     featureData.classList.remove('hidden');
