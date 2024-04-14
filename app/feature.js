@@ -20,10 +20,7 @@ backBtn.addEventListener('click', () => {
   profilePage.classList.remove('hidden');
 });
 
-let flag = false;
-
 optionBox.forEach(e => {
-  1000;
   e.addEventListener('click', element => {
     optionBox.forEach(el => {
       el.classList.remove('border');
