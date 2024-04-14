@@ -45,7 +45,7 @@ nextBtn.addEventListener('click', () => {
 LocationData.value = '';
 
 function checkUrl(urlPart) {
-  let target = 'index.html';
+  let target = 'Dribble';
   for (let i = 0; i < urlPart.length; i++) {
     if (urlPart[i] == target) {
       return true;
