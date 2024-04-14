@@ -24,6 +24,7 @@ nextBtn.addEventListener('click', () => {
   const urlPart = value.split('/');
   console.log(`${value}`);
   console.log(checkUrl(urlPart));
+  console.log('run it');
 
   if (checkUrl(urlPart)) {
     Error.style.border = '2px solid red';
