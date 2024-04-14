@@ -42,3 +42,15 @@
 .active {
   background-color: green;
 }
+
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: red;
+}
+
+.validBorder {
+  border: 2px solid green;
+}
