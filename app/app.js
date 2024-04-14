@@ -118,18 +118,25 @@ submitBtn.addEventListener('click', async () => {
       } else if (NameOfUser.value === '' || password.value.length < 6) {
         password.classList.add('border');
         NameOfUser.classList.add('border');
+        console.log('hello at');
 
         if (NameOfUser.value !== '') {
           NameOfUser.classList.remove('border');
         }
-      } else {
-        if (password.value.length >= 6) {
-          password.classList.add('validBorder');
-          // character.classList.add('valid');
+
+        if (password.value.length < 6) {
+          password.classList.add('border');
         }
+      } else {
+        password.classList.add('validBorder');
       }
 
-      if (checkEmail(value) && inputUserName.value !== '' && checkBox.checked) {
+      if (
+        checkEmail(value) &&
+        inputUserName.value !== '' &&
+        checkBox.checked &&
+        password.value.length >= 6
+      ) {
         dataError.classList.add('hidden');
         emailId.classList.remove('border');
         userName.classList.remove('border');
@@ -137,6 +144,7 @@ submitBtn.addEventListener('click', async () => {
         profilePage.classList.remove('hidden');
       } else {
         checkBox.classList.add('border');
+        password.classList.add('border');
       }
     }
   }
