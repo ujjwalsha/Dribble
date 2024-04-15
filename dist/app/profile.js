@@ -1,18 +1,13 @@
 'use strict';
 
-signPage.classList.remove('hidden');
-featureData.classList.add('hidden');
-profilePage.classList.add('hidden');
-
 const chooseImage = document.querySelector('choose-image');
 const profilePic = document.getElementById('profile-pic');
-const inputFile = document.getElementById('input-file');
+let inputFile = document.getElementById('input-file');
+
 const LocationData = document.querySelector('[data-location]');
 const nextBtn = document.querySelector('#next-button');
 const Error = document.querySelector('[error-null]');
-const yourCharacter = document.querySelector('[character]');
-
-inputFile.classList.add('hidden');
+var yourCharacter = document.querySelectorAll('[character]');
 
 inputFile.onchange = function () {
   profilePic.src = URL.createObjectURL(inputFile.files[0]);
@@ -29,16 +24,17 @@ nextBtn.addEventListener('click', () => {
   if (checkUrl(urlPart)) {
     Error.style.border = '2px solid red';
   } else {
-    featureData.classList.remove('hidden');
-    profilePage.classList.add('hidden');
-    let imageUrl = `${value}`;
+    const url = 'feature.html';
+    window.open(url, '_self');
 
-    fetchImage(imageUrl)
+    let imageUrl = `${value}`;
+    console.log(imageUrl);
+    fetchImage(profilePic.src)
       .then(response => {
         console.log('😄');
       })
       .catch(error => {
-        console.log('😫');
+        console.error(error);
       });
   }
 });
@@ -55,11 +51,13 @@ function checkUrl(urlPart) {
   return false;
 }
 
-console.log(yourCharacter.src);
-
 async function fetchImage(imageUrl) {
   const response = await fetch(imageUrl);
+  console.log(response);
   const data = await response.blob();
+  console.log(data);
 
-  yourCharacter.src = URL.createObjectURL(data);
+  yourCharacter.forEach(e => {
+    e.src = URL.createObjectURL(data);
+  });
 }

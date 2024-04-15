@@ -11,7 +11,7 @@ const signPage = document.querySelector('[signup-page]');
 const profilePage = document.querySelector('[second-page]');
 const featureData = document.querySelector('[feature-data]');
 const checkBox = document.querySelector('.check');
-profilePage.classList.add('hidden');
+// profilePage.classList.add('hidden');
 const character = document.querySelector('[character]');
 const uppercase = document.querySelector('[uppercase]');
 const lowercase = document.querySelector('[lowercase]');
@@ -34,7 +34,7 @@ function emptyBox() {
 }
 
 async function fetchUser() {
-  const response = await fetch('./app/data.json');
+  const response = await fetch('./dist/app/data.json');
   //   console.log(response);
   const data = await response.json();
 
@@ -140,8 +140,10 @@ submitBtn.addEventListener('click', async () => {
         dataError.classList.add('hidden');
         emailId.classList.remove('border');
         userName.classList.remove('border');
-        signPage.classList.add('hidden');
-        profilePage.classList.remove('hidden');
+        // signPage.classList.add('hidden');
+        const url = 'dist/profile.html';
+        window.open(url, '_self');
+        // profilePage.classList.remove('hidden');
       } else {
         checkBox.classList.add('border');
         password.classList.add('border');
